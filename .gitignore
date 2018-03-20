@@ -12,3 +12,6 @@ dist
 
 # Backpack build
 build
+
+# database files
+*.db
