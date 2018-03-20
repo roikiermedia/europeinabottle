@@ -1,4 +1,5 @@
 # Europe in a Bottle
+> Tell your Story and connect with Europeans all over the World
 
 ## Build Setup
 
