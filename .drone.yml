@@ -4,3 +4,12 @@ pipeline:
     commands:
       - npm install
       - npm run build
+
+  publish:
+    image: plugins/docker
+    repo: roikiermedia/europeinabottle
+    secrets:
+      username: dockeruser
+      password: dockerpassword
+    when:
+      branch: master
