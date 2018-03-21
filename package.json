@@ -15,9 +15,11 @@
     "body-parser": "^1.18.2",
     "cross-env": "^5.0.1",
     "express": "^4.15.3",
+    "mapbox-gl": "^0.44.1",
     "nedb": "^1.8.0",
     "nuxt": "^1.0.0-rc3",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.15",
+    "vue-mapbox": "0.0.16"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
