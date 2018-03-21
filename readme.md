@@ -23,4 +23,4 @@ We use [backpack](https://github.com/palmerhq/backpack) to watch and build the a
 
 ---
 
-Made with ♡ at [#EUhack](https://twitter.com/search?q=%23EUhack) | [License](./License)
+Made with ♡ at [#EUhack](https://twitter.com/search?q=%23EUhack) | [CI & CD](https://drone.euinabottle.eu/roikiermedia/europeinabottle) | [License](./License)
