@@ -1,6 +1,11 @@
 <template>
   <section>
     <button @click="testFillout">Fillout</button>
+
+    <div v-if="messageSendSuccess">
+      Hey, you just send your bottle and this is awesome! Some one else will be really happy hearing from you. Just give us a second to find your personal bottle.
+    </div>
+
     <div>
       <span>Your name:* </span>
       <input v-model="userName" placeholder="Write your name">
@@ -25,14 +30,12 @@
     <input type="checkbox" id="checkbox" v-model="checked">* Please check that you are following <a href="#">Our Guidlines</a>
 
     <br/>
-    <button>Send your bottle away</button>
+    <button @click="sendBottle">Send your bottle away</button>
 
     <p>
       You need to fill out your name and a message for sending your bottle away.
     </p>
 
-    <button @click="testpost">test post</button>
-    <button @click="testget">test get</button>
   </section>
 </template>
 
@@ -48,10 +51,11 @@ export default {
       userMessage: '',
       userTwitterHandle: '',
       checked: false,
+      messageSendSuccess: false,
     };
   },
   methods: {
-    testpost() {
+    sendBottle() {
       axios.post('/api/message', { message: {
         userName: this.userName,
         userLocation: this.userLocation,
@@ -60,6 +64,7 @@ export default {
       },
       });
       console.log('Send');
+      this.messageSendSuccess = true;
     },
     async testget() {
       let message = await axios.get('/api/randommessage');
@@ -68,7 +73,7 @@ export default {
     testFillout() {
       this.userName = 'Beate Beispiel';
       this.userLocation = 'Hamburg, German';
-      this.userMessage = 'You are awesome! Hamburg is small cool border town in the centry of europe. Tschüß und Good Bye';
+      this.userMessage = new Date().getTime() + ' You are awesome! Hamburg is small cool border town in the centry of europe. Tschüß und Good Bye';
       this.userTwitterHandle = '@euinabottle';
     },
   },
