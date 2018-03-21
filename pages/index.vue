@@ -1,6 +1,6 @@
 <template>
   <section>
-
+    <button @click="testFillout">Fillout</button>
     <div>
       <span>Your name:* </span>
       <input v-model="userName" placeholder="Write your name">
@@ -9,6 +9,11 @@
     <div>
       <span>Where are you from: </span>
       <input v-model="userLocation" placeholder="Write your location">
+    </div>
+
+    <div>
+      <span>Your Twitter Handle: </span>
+      <input v-model="userTwitterHandle" placeholder="@euinabottle">
     </div>
 
     <span>What is your bottle message is:* </span>
@@ -41,22 +46,30 @@ export default {
       userName: '',
       userLocation: '',
       userMessage: '',
+      userTwitterHandle: '',
       checked: false,
     };
   },
   methods: {
     testpost() {
       axios.post('/api/message', { message: {
-        userName: 'test',
-        userLocation: 'betahaus HH',
-        userMessage: 'hello world',
-        userTwitterHandle: '@roikiermedia',
+        userName: this.userName,
+        userLocation: this.userLocation,
+        userMessage: this.userMessage,
+        userTwitterHandle: this.userTwitterHandle,
       },
       });
+      console.log('Send');
     },
     async testget() {
       let message = await axios.get('/api/randommessage');
       console.log(message.data);
+    },
+    testFillout() {
+      this.userName = 'Beate Beispiel';
+      this.userLocation = 'Hamburg, German';
+      this.userMessage = 'You are awesome! Hamburg is small cool border town in the centry of europe. Tschüß und Good Bye';
+      this.userTwitterHandle = '@euinabottle';
     },
   },
 };
