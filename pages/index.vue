@@ -40,14 +40,20 @@
         You need to fill out your name and a message for sending your bottle away.
       </p>
 
+      <bottle-history></bottle-history>
+
   </section>
 </template>
 
 <script>
 import axios from '~/plugins/axios';
+import BottleHistory from '~/components/bottleHistory.vue';
 
 export default {
   name: 'index',
+  components: {
+    BottleHistory,
+  },
   data() {
     return {
       userName: '',
@@ -73,20 +79,42 @@ export default {
           userMessage: this.userMessage,
           userTwitterHandle: this.userTwitterHandle,
         },
+      }).then((res) => {
+        // Save id from created bottle in a cookie
+        this.updateCookie(res.data._id);
       });
       this.messageSendSuccess = true;
-      this.findNewBottle();
+      // this.findNewBottle();
     },
     async findNewBottle() {
       let message = await axios.get('/api/randommessage');
-      console.log(message.data);
       window.location.href = 'bottles/' + message.data._id;
     },
     testFillout() {
       this.userName = 'Beate Beispiel';
       this.userLocation = 'Hamburg, German';
       this.userMessage = new Date().getTime() + ' You are awesome! Hamburg is small cool border town in the centry of europe. Tschüß und Good Bye';
-      this.userTwitterHandle = '@euinabottle';
+      this.userTwitterHandle = 'euinabottle';
+    },
+    updateCookie(newMessageId) {
+      let localInfo = document.cookie;
+      document.cookie = 'messageId=' + newMessageId + ',' + this.getCookie('messageId');
+    },
+    getCookie(cname) {
+      // Todo: Make more beautiful and not use some random code, but it works!
+      var name = cname + '=';
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return '';
     },
   },
 };
