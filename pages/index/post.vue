@@ -1,39 +1,25 @@
 <template>
 	<section>
-		<div>
-			<span>Your name:* </span>
-			<input v-model="userName" placeholder="Write your name">
-		</div>
 
-		<div>
-			<span>Where are you from: </span>
-			<input v-model="userLocation" placeholder="Write your location">
-		</div>
+    <textarea v-model="userMessage" placeholder="Dear People of the european union..." maxlength="10000" class="content"></textarea>
+    <span>Grettings
+      <span v-if="userLocation"> from </span>
+      <span v-else>: </span>
+      <input type="text" v-model="userLocation" placeholder="from..." class="location">
+    </span>
+    <input type="text" v-model="userName" placeholder="Your Name" class="signiture">
+    <span class="post">P.s. You can also find me on Twitter @<input type="text" v-model="userTwitterHandle" placeholder="yourTwitterhandle" class="twitter"></span>
 
-		<div>
-			<span>Your Twitter Handle: </span>
-			<input v-model="userTwitterHandle" placeholder="@euinabottle">
-		</div>
+    <div class="guidelines">
+      <input name="guidelines" type="checkbox" id="checkbox" v-model="checked">
+      <label for="guidelines">* Please check that you are following <nuxt-link to="/guidelines">our Guidelines</nuxt-link>.</label>
+    </div>
 
-		<span>Write your bottle message:* </span>
-		<p style="white-space: pre-line;">{{ userMessage }}</p>
-		<textarea v-model="userMessage" placeholder="add multiple lines" maxlength="10000"></textarea>
 
-		<br/>
-		<input type="checkbox" id="checkbox" v-model="checked">* Please check that you are following <a href="#">Our Guidlines</a>
+    <button @click="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Throw your bottle into the ocean!</button>
 
-		<br/>
-		<button @click="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Send your bottle away</button>
 
-		<div v-if="messageSendSuccess">
-			Hey, you just send your bottle and this is awesome! Some one else will be really happy hearing from you. Just give us a second to find your personal bottle.
-		</div>
-
-		<p v-else>
-			You need to fill out your name and a message for sending your bottle away.
-		</p>
-
-    <bottle-history></bottle-history>
+    <!-- <bottle-history></bottle-history> -->
 	</section>
 </template>
 
@@ -97,7 +83,7 @@ export default {
     },
     testFillout() {
       this.userName = 'Beate Beispiel';
-      this.userLocation = 'Hamburg, German';
+      this.userLocation = 'Hamburg, Germany';
       this.userMessage = new Date().getTime() + ' You are awesome! Hamburg is small cool border town in the centry of europe. Tschüß und Good Bye';
       this.userTwitterHandle = '@euinabottle';
     },
@@ -106,10 +92,47 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-textarea {
-  width: 100%;
-  height: 50px;
+span, input, textarea {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  
+  font-size: 16px;
+  font-family: monospace;
+}
 
-  resize: none;
+button {
+  display: block;
+
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.content {
+  min-height: 120px;
+  width: 100%;
+
+  overflow-y: auto;
+
+  resize: vertical;
+}
+.signiture {
+  width: 100%;
+
+  font-size: 24px;
+  font-family: cursive;
+}
+.post {
+  position: relative;
+
+  margin-top: 40px;
+
+  font-size: 14px;
+}
+.guidelines {
+  display: block;
+
+  margin-top: 28px;
 }
 </style>

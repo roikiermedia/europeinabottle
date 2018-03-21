@@ -5,7 +5,9 @@
 
     <main class="card">
       <nuxt-child></nuxt-child>
-      <nuxt-link to="/impressum">Impressum</nuxt-link>
+      <nav>
+        <nuxt-link to="/impressum">Impressum</nuxt-link>
+      </nav>
     </main>
 
     <mgl-map class="map" :center="center" :zoom="zoom" :mapStyle="style"></mgl-map>
@@ -43,15 +45,26 @@ export default {
   position: relative;
   z-index: 10;
 
-  max-width: 720px;
+  max-width: 680px;
 
   margin: auto;
   margin-top: 32px;
   margin-bottom: 16px;
-  padding: 8px 16px;
+  padding: 24px 24px;
 
-  border-radius: 2px;
-  background-color: white;
+  border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  background-color: #ffffff;
+
+  background-position: auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+  background-size: 100% 1.5em;
+  background-image: linear-gradient(0deg, rgb(238,238,238) 0.1em, rgba(0,0,0,0) 0.1em);
+}
+
+nav {
+  margin-top: 24px;
 }
 </style>
