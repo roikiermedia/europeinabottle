@@ -26,22 +26,40 @@
       You need to fill out your name and a message for sending your bottle away.
     </p>
 
+    <button @click="testpost">test post</button>
+    <button @click="testget">test get</button>
   </section>
 </template>
 
 <script>
+import axios from '~/plugins/axios';
 
-  export default {
-    name: 'index',
-    data() {
-      return {
-        userName: '',
-        userLocation: '',
-        userMessage: '',
-        checked: false,
-      };
+export default {
+  name: 'index',
+  data() {
+    return {
+      userName: '',
+      userLocation: '',
+      userMessage: '',
+      checked: false,
+    };
+  },
+  methods: {
+    testpost() {
+      axios.post('/api/message', { message: {
+        userName: 'test',
+        userLocation: 'betahaus HH',
+        userMessage: 'hello world',
+        userTwitterHandle: '@roikiermedia',
+      },
+      });
     },
-  };
+    async testget() {
+      let message = await axios.get('/api/randommessage');
+      console.log(message.data);
+    },
+  },
+};
 </script>
 
 <style scoped>
