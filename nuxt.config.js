@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -14,7 +15,10 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~/assets/styles/main.scss'],
+  css: ['~/assets/styles/main.scss', '~/node_modules/mapbox-gl/dist/mapbox-gl.css'],
+  plugins: [
+    { src: '~/plugins/vue-mapbox', ssr: false },
+  ],
   /*
   ** Add axios globally
   */

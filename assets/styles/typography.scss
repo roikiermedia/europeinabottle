@@ -4,6 +4,7 @@
 
 $font-serif: 'Noto Serif',serif;
 $font-sans-serif: 'Lato',sans-serif;
+$font-monospace: monospace;
 $fontcolor: #151515;
 $fontcolor-light: lighten($fontcolor, 15%);
 
@@ -15,7 +16,7 @@ body {
 	word-wrap: break-word;
 	word-break: break-word;
 	color: $fontcolor;
-	font-family: $font-sans-serif;
+	font-family: $font-monospace;
 }
 
 /*=== BASIC TYPO ===*/
@@ -26,7 +27,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: $font-sans-serif;
+	font-family: $font-monospace;
 	font-weight: 900;
 }
 
@@ -57,7 +58,7 @@ h6 {
 
 p {
 	margin: 4px 0;
-	font-family: $font-serif;
+	font-family: $font-monospace;
 	font-size: 18px;
 	line-height: 1.58;
 }
