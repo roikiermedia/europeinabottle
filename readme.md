@@ -1,6 +1,8 @@
 # Europe in a Bottle
 > Tell your Story and connect with Europeans all over the World
 
+![build status](https://drone.euinabottle.eu/api/badges/roikiermedia/europeinabottle/status.svg)
+
 ## Build Setup
 
 ``` bash
@@ -23,4 +25,4 @@ We use [backpack](https://github.com/palmerhq/backpack) to watch and build the a
 
 ---
 
-Made with ♡ at [#EUhack](https://twitter.com/search?q=%23EUhack) | [License](./License)
+Made with ♡ at [#EUhack](https://twitter.com/search?q=%23EUhack) | [CI & CD](https://drone.euinabottle.eu/roikiermedia/europeinabottle) | [License](./License)
