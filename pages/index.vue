@@ -66,7 +66,7 @@ export default {
         return;
       }
       this.errorMessage = false;
-      axios.post('/api/message', {
+      axios.post('/api/bottles', {
         message: {
           userName: this.userName,
           userLocation: this.userLocation,
@@ -74,12 +74,13 @@ export default {
           userTwitterHandle: this.userTwitterHandle,
         },
       });
-      console.log('Send');
       this.messageSendSuccess = true;
+      this.findNewBottle();
     },
-    async testget() {
+    async findNewBottle() {
       let message = await axios.get('/api/randommessage');
       console.log(message.data);
+      window.location.href = 'bottles/' + message.data._id;
     },
     testFillout() {
       this.userName = 'Beate Beispiel';
