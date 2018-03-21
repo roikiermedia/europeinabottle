@@ -69,11 +69,11 @@ export default {
         this.updateCookie(res.data._id);
       });
       this.messageSendSuccess = true;
-      // this.findNewBottle();
+      this.getRandomBottle();
     },
-    async testget() {
+    async getRandomBottle() {
       let message = await axios.get('/api/randommessage');
-      // window.location.href = 'bottles/' + message.data._id;
+      this.$router.push(`/bottle/${message.data._id}`);
     },
     updateCookie(newMessageId) {
       let localInfo = document.cookie;
