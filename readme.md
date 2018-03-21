@@ -1,6 +1,8 @@
 # Europe in a Bottle
 > Tell your Story and connect with Europeans all over the World
 
+![build status](https://drone.euinabottle.eu/api/badges/roikiermedia/europeinabottle/status.svg)
+
 ## Build Setup
 
 ``` bash
