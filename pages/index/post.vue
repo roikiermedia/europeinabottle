@@ -32,13 +32,19 @@
 		<p v-else>
 			You need to fill out your name and a message for sending your bottle away.
 		</p>
+
+    <bottle-history></bottle-history>
 	</section>
 </template>
 
 <script>
 import axios from '~/plugins/axios';
+import BottleHistory from '~/components/bottleHistory.vue';
 
 export default {
+  components: {
+    BottleHistory,
+  },
 	data() {
     return {
       userName: '',
@@ -51,19 +57,43 @@ export default {
   },
   methods: {
     sendBottle() {
-      axios.post('/api/message', { message: {
+      axios.post('/api/bottle', { message: {
         userName: this.userName,
         userLocation: this.userLocation,
         userMessage: this.userMessage,
         userTwitterHandle: this.userTwitterHandle,
       },
+      })
+      .then((res) => {
+        // Save id from created bottle in a cookie
+        this.updateCookie(res.data._id);
       });
-      console.log('Send');
       this.messageSendSuccess = true;
+      // this.findNewBottle();
     },
     async testget() {
       let message = await axios.get('/api/randommessage');
-      console.log(message.data);
+      // window.location.href = 'bottles/' + message.data._id;
+    },
+    updateCookie(newMessageId) {
+      let localInfo = document.cookie;
+      document.cookie = 'messageId=' + newMessageId + ',' + this.getCookie('messageId');
+    },
+    getCookie(cname) {
+      // Todo: Make more beautiful and not use some random code, but it works!
+      var name = cname + '=';
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return '';
     },
     testFillout() {
       this.userName = 'Beate Beispiel';
