@@ -5,7 +5,7 @@ const router = Router();
 
 const messages = new Datastore({ filename: 'server/database/messages.db', autoload: true });
 
-// message: {
+// bottles: {
 //     userName: String,
 //     userLocation: String,
 //     userMessage: String,
@@ -28,7 +28,15 @@ router.get('/randommessage', (req, res) => {
   });
 });
 
-router.post('/message', (req, res) => {
+router.get('/bottles/:messageID', (req, res) => {
+  messages.findOne({_id: req.params.messageID}).exec((err2, docs) => {
+    if (err2) res.status(500);
+    // docs[0] is your random doc
+    res.json(docs);
+  });
+});
+
+router.post('/bottles', (req, res) => {
   messages.insert(req.body.message, (err) => {
     if (err) res.status(500);
     res.status(200);
