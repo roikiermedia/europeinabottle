@@ -1,0 +1,14 @@
+pipeline:
+  build:
+    image: node:latest
+    commands:
+      - npm install
+      - npm run build
+
+  publish:
+    image: plugins/docker
+    repo: roikiermedia/europeinabottle
+    secrets: [ docker_username, docker_password ]
+    when:
+      branch: master
+      event: push

@@ -1,47 +1,30 @@
 <template>
   <section>
-    <!-- <button @click="testpost">test post</button>
-    <button @click="testget">test get</button> -->
 
-    <mgl-map class="map" :center="center" :zoom="zoom" :mapStyle="style">
-      <mgl-navigation-control position="top-right"/>
-      <mgl-geolocate-control position="top-right"/>
-    </mgl-map>
+    <!-- <button @click="testFillout">Fillout</button> -->
+
+    <main class="card">
+      <nuxt-child></nuxt-child>
+      <nuxt-link to="/impressum">Impressum</nuxt-link>
+    </main>
+
+    <mgl-map class="map" :center="center" :zoom="zoom" :mapStyle="style"></mgl-map>
   </section>
 </template>
 
 <script>
-import axios from '~/plugins/axios';
-import { MglMap, MglNavigationControl, MglGeolocateControl, MglMarker } from 'vue-mapbox';
+import { MglMap } from 'vue-mapbox';
 
 export default {
   components: {
     MglMap,
-    MglNavigationControl,
-    MglGeolocateControl,
-    MglMarker,
   },
   data() {
     return {
       style: '/mapstyle.json',
-      center: [9.43564, 54.7886],
-      zoom: 14,
+      center: [9.594757, 54.859447],
+      zoom: 15,
     };
-  },
-  methods: {
-    testpost() {
-      axios.post('/api/message', { message: {
-          userName: 'test',
-          userLocation: 'betahaus HH',
-          userMessage: 'hello world',
-          userTwitterHandle: '@roikiermedia',
-        }
-      });
-    },
-    async testget() {
-      let message = await axios.get('/api/randommessage');
-      console.log(message.data);
-    }
   },
 };
 </script>
@@ -49,7 +32,26 @@ export default {
 <style scoped>
 .map {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  z-index: 0;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.card {
+  position: relative;
+  z-index: 10;
+
+  max-width: 720px;
+
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 </style>

@@ -28,10 +28,17 @@ router.get('/randommessage', (req, res) => {
   });
 });
 
-router.post('/message', (req, res) => {
-  messages.insert(req.body.message, (err) => {
+router.get('/bottle/:id', (req, res) => {
+  messages.findOne({ _id: req.params.id }).exec((err, doc) => {
     if (err) res.status(500);
-    res.status(200);
+    res.json(doc);
+  });
+});
+
+router.post('/bottle', (req, res) => {
+  messages.insert(req.body.message, (err, newDoc) => {
+    if (err) res.status(500);
+    res.json(newDoc);
   });
 });
 
