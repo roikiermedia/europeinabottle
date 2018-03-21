@@ -1,40 +1,44 @@
 <template>
   <section>
     <button @click="testFillout">Fillout</button>
+      <div v-if="messageSendSuccess" class="success">
+        Hey, you just send your bottle and this is awesome! Some one else will be really happy hearing from you. Just give us a second to find your personal bottle.
+      </div>
 
-    <div v-if="messageSendSuccess">
-      Hey, you just send your bottle and this is awesome! Some one else will be really happy hearing from you. Just give us a second to find your personal bottle.
-    </div>
 
-    <div>
-      <span>Your name:* </span>
-      <input v-model="userName" placeholder="Write your name">
-    </div>
+      <div v-if="errorMessage" class="error">
+        You need to give us your name and your message. The message needs to be atleast 140 characters.
+      </div>
 
-    <div>
-      <span>Where are you from: </span>
-      <input v-model="userLocation" placeholder="Write your location">
-    </div>
+      <div>
+        <span>Your name:* </span>
+          <input v-model="userName" name="userName" placeholder="Your Name!" required>
+      </div>
 
-    <div>
-      <span>Your Twitter Handle: </span>
-      <input v-model="userTwitterHandle" placeholder="@euinabottle">
-    </div>
+      <div>
+        <span>Where are you from: </span>
+        <input v-model="userLocation" placeholder="Write your location">
+      </div>
 
-    <span>What is your bottle message is:* </span>
-    <p style="white-space: pre-line;">{{ userMessage }}</p>
-    <br>
-    <textarea v-model="userMessage" placeholder="add multiple lines"></textarea>
+      <div>
+        <span>Your Twitter Handle: </span>
+        <input v-model="userTwitterHandle" placeholder="@euinabottle">
+      </div>
 
-    <br/>
-    <input type="checkbox" id="checkbox" v-model="checked">* Please check that you are following <a href="#">Our Guidlines</a>
+      <span>What is your bottle message is:* </span>
+      <p style="white-space: pre-line;">{{ userMessage }}</p>
+      <br>
+      <textarea v-model="userMessage" placeholder="S" required></textarea>
 
-    <br/>
-    <button @click="sendBottle">Send your bottle away</button>
+      <br/>
+      <input type="checkbox" id="checkbox" v-model="checked">* Please check that you are following <a href="#">Our Guidlines</a>
 
-    <p>
-      You need to fill out your name and a message for sending your bottle away.
-    </p>
+      <br/>
+      <button  @click="sendBottle">Send your bottle away</button>
+
+      <p>
+        You need to fill out your name and a message for sending your bottle away.
+      </p>
 
   </section>
 </template>
@@ -52,16 +56,23 @@ export default {
       userTwitterHandle: '',
       checked: false,
       messageSendSuccess: false,
+      errorMessage: false,
     };
   },
   methods: {
     sendBottle() {
-      axios.post('/api/message', { message: {
-        userName: this.userName,
-        userLocation: this.userLocation,
-        userMessage: this.userMessage,
-        userTwitterHandle: this.userTwitterHandle,
-      },
+      if (this.userName === '' || this.userMessage === '' || this.userMessage.length > 140) {
+        this.errorMessage = true;
+        return;
+      }
+      this.errorMessage = false;
+      axios.post('/api/message', {
+        message: {
+          userName: this.userName,
+          userLocation: this.userLocation,
+          userMessage: this.userMessage,
+          userTwitterHandle: this.userTwitterHandle,
+        },
       });
       console.log('Send');
       this.messageSendSuccess = true;
