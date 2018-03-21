@@ -7,10 +7,7 @@ pipeline:
 
   publish:
     image: plugins/docker
-    registry: hub.docker.com
-    repo: hub.docker.com/r/roikiermedia/europeinabottle
-    secrets:
-      - username: dockeruser
-      - password: dockerpassword
+    repo: roikiermedia/europeinabottle
+    secrets: [ docker_username, docker_password ]
     when:
       branch: master
