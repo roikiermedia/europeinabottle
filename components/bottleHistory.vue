@@ -1,9 +1,9 @@
 <template>
   <section>
     <h3>Bottle History</h3>
-    <table>
-      <tr v-for="bottle in bottles"><td>{{bottle.userMessage}}</td></tr>
-    </table>
+    <ul>
+      <li v-for="bottle in bottles" :key="bottle._id">{{bottle.userMessage}}</li>
+    </ul>
   </section>
 </template>
 
@@ -22,9 +22,8 @@ export default {
       const bottleIds = this.getCookie('messageId').split(',');
       bottleIds.forEach((bottleId) => {
         if (bottleId !== '') {
-          axios.get('/api/bottles/' + bottleId).then((res) => {
+          axios.get('/api/bottle/' + bottleId).then((res) => {
             this.bottles.push(res.data);
-            console.log(this.bottles);
           });
         }
       });

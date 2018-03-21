@@ -1,12 +1,12 @@
-html, body {
-  background-color: #fff;
-  color: #000;
-  letter-spacing: 0.5px;
-  font-family: "Source Sans Pro", Arial, sans-serif;
-  height: 100vh;
-  margin: 0;
-}
+@import 'colors.scss';
+@import 'reset.scss';
+@import 'transitions.scss';
+@import 'typography.scss';
 
-a, a:hover, a:focus, a:visited {
-  color: #000;
+html, body {
+  height: 100vh;
+
+  margin: 0;
+
+  background-color: #fff;
 }

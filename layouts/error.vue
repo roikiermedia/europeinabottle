@@ -6,7 +6,6 @@
     <h2 class="info">
       {{ error.message }}
     </h2>
-    <h4>This bottle could not be found...</h4>
     <nuxt-link class="button" to="/" v-if="error.statusCode === 404">
       Homepage
     </nuxt-link>
