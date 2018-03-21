@@ -37,9 +37,10 @@ router.get('/bottles/:messageID', (req, res) => {
 });
 
 router.post('/bottles', (req, res) => {
-  messages.insert(req.body.message, (err) => {
+  messages.insert(req.body.message, (err, newDoc) => {
     if (err) res.status(500);
-    res.status(200);
+    // res.status(200);
+    res.json(newDoc);
   });
 });
 
