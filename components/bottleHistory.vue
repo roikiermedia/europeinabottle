@@ -1,13 +1,9 @@
 <template>
   <section>
     <h3>Bottle History</h3>
-    <table>
-      <tbody>
-        <tr>
-          <td v-for="bottle in bottles" :key="bottle.id">{{bottle.userMessage}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <ul>
+      <li v-for="bottle in bottles" :key="bottle._id">{{bottle.userMessage}}</li>
+    </ul>
   </section>
 </template>
 
@@ -28,7 +24,6 @@ export default {
         if (bottleId !== '') {
           axios.get('/api/bottle/' + bottleId).then((res) => {
             this.bottles.push(res.data);
-            console.log(this.bottles);
           });
         }
       });
