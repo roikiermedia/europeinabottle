@@ -1,40 +1,47 @@
 <template>
   <section>
-    <button @click="testFillout">Fillout</button>
+    <!-- <button @click="testFillout">Fillout</button> -->
 
-    <div v-if="messageSendSuccess">
-      Hey, you just send your bottle and this is awesome! Some one else will be really happy hearing from you. Just give us a second to find your personal bottle.
-    </div>
+    <main class="card">
+      <h1>Europe in a Bottle</h1>
+      <span>Tell is your story about Europe and recieve unique messages when we launch.</span>
 
-    <div>
-      <span>Your name:* </span>
-      <input v-model="userName" placeholder="Write your name">
-    </div>
+      <div>
+        <span>Your name:* </span>
+        <input v-model="userName" placeholder="Write your name">
+      </div>
 
-    <div>
-      <span>Where are you from: </span>
-      <input v-model="userLocation" placeholder="Write your location">
-    </div>
+      <div>
+        <span>Where are you from: </span>
+        <input v-model="userLocation" placeholder="Write your location">
+      </div>
 
-    <div>
-      <span>Your Twitter Handle: </span>
-      <input v-model="userTwitterHandle" placeholder="@euinabottle">
-    </div>
+      <div>
+        <span>Your Twitter Handle: </span>
+        <input v-model="userTwitterHandle" placeholder="@euinabottle">
+      </div>
 
-    <span>What is your bottle message is:* </span>
-    <p style="white-space: pre-line;">{{ userMessage }}</p>
-    <br>
-    <textarea v-model="userMessage" placeholder="add multiple lines"></textarea>
+      <span>Write your bottle message:* </span>
+      <p style="white-space: pre-line;">{{ userMessage }}</p>
+      <textarea v-model="userMessage" placeholder="add multiple lines" maxlength="10000"></textarea>
 
-    <br/>
-    <input type="checkbox" id="checkbox" v-model="checked">* Please check that you are following <a href="#">Our Guidlines</a>
+      <br/>
+      <input type="checkbox" id="checkbox" v-model="checked">* Please check that you are following <a href="#">Our Guidlines</a>
 
-    <br/>
-    <button @click="sendBottle">Send your bottle away</button>
+      <br/>
+      <button @click="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Send your bottle away</button>
 
-    <p>
-      You need to fill out your name and a message for sending your bottle away.
-    </p>
+      <div v-if="messageSendSuccess">
+        Hey, you just send your bottle and this is awesome! Some one else will be really happy hearing from you. Just give us a second to find your personal bottle.
+      </div>
+
+      <p v-else>
+        You need to fill out your name and a message for sending your bottle away.
+      </p>
+
+      <div><a href="impressum">Impressum</a></div>
+    </main>
+
 
   </section>
 </template>
@@ -81,4 +88,22 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  max-width: 720px;
+
+  margin: auto;
+  margin-top: 32px;
+  padding: 8px 16px;
+
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+textarea {
+  width: 100%;
+  height: 50px;
+
+  resize: none;
+}
 </style>
