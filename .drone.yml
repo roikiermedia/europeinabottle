@@ -9,7 +9,7 @@ pipeline:
     image: plugins/docker
     repo: roikiermedia/europeinabottle
     secrets:
-      username: dockeruser
-      password: dockerpassword
+      - username: dockeruser
+      - password: dockerpassword
     when:
       branch: master
