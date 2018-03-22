@@ -62,7 +62,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .map {
   position: fixed;
   top: 0;
@@ -104,4 +104,8 @@ export default {
 nav {
   margin-top: 24px;
 }
+</style>
+
+<style lang="scss" scoped>
+
 </style>
