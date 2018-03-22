@@ -10,12 +10,13 @@
     </p>
 
     <span v-if="bottleMessage.userTwitterHandle">
-      You can reach the creator of this Bottle Message on Twitter: {{bottleMessage.userTwitterHandle}}
+      You can reach the creator of this Bottle Message on Twitter: <a target="_blank" :href="'https://twitter.com/' + bottleMessage.userTwitterHandle">@{{bottleMessage.userTwitterHandle}}</a>
     </span>
 
     <!-- <button>Download as image</button>
     <button>Rethrow the bottle</button>
     <button>Report the bottle</button> -->
+    <nuxt-link to="/" tag="button">Throw back into ocean.</nuxt-link>
   </section>
 </template>
 
@@ -34,4 +35,11 @@ export default {
 </script>
 
 <style scoped>
+button {
+  display: block;
+
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: 0;
+}
 </style>
