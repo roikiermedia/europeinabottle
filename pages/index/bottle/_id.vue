@@ -16,7 +16,7 @@
     <!-- <button>Download as image</button>
     <button>Rethrow the bottle</button>
     <button>Report the bottle</button> -->
-    <nuxt-link to="/" tag="button">Throw back into sea.</nuxt-link>
+    <nuxt-link to="/thanks" tag="button">Throw back into sea.</nuxt-link>
   </section>
 </template>
 
