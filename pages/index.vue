@@ -49,6 +49,7 @@
 import { MglMap } from 'vue-mapbox';
 
 export default {
+  scrollToTop: true,
   components: {
     MglMap,
   },
