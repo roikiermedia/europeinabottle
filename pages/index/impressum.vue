@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="card">
     <h2>Impressum - Verantwortlich für diese Website</h2>
     <address>
       Samuel Brinkmann<br>
