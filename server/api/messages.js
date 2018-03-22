@@ -30,7 +30,7 @@ router.get('/randommessage', (req, res) => {
 
 router.get('/bottle/:id', (req, res) => {
   messages.findOne({ _id: req.params.id }).exec((err, doc) => {
-    if (err) res.status(500);
+    if (err) res.status(404);
     res.json(doc);
   });
 });
