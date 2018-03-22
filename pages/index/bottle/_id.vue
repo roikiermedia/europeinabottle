@@ -2,7 +2,7 @@
   <section class="card">
     <h3>Your Bottle Message</h3>
     <div>
-      <p>{{bottleMessage.userName}} <span v-if="bottleMessage.userLocation">from {{bottleMessage.userLocation}} writes:</span></p>
+      <p>{{bottleMessage.userName}} <span v-if="bottleMessage.userLocation">from {{bottleMessage.userLocation}} </span>writes:</p>
     </div>
 
     <p>
