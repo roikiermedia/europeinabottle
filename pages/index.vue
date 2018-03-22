@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       style: '/mapstyle.json',
-      center: [9.594757, 54.859447],
+      center: [9.44326, 54.81086],
       zoom: 15,
     };
   },
