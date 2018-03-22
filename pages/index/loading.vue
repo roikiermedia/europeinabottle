@@ -39,7 +39,7 @@ span {
 }
 
 .loader {
-  color: #1a3c8a;
+  color: #fff;
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;
