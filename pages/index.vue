@@ -3,9 +3,12 @@
 
     <!-- <button @click="testFillout">Fillout</button> -->
 
-    <header class="card">
-      <h1>#EUinaBottle</h1>
-      <i>Tell your Story and connect with people everywhere in Europe.</i><br>
+    <header class="card" style="display: flex; align-items: center;">
+      <img src="/icon.png" class="logo">
+      <div>
+        <h1>#EUinaBottle</h1>
+        <i style="font-size: 16px;">Tell your Story and connect with people everywhere in Europe.</i><br>
+      </div>
     </header>
 
     <main>
@@ -98,6 +101,22 @@ export default {
   .card {
     margin-left: 10px;
     margin-right: 10px;
+  }
+}
+
+.logo {
+  height: 75px;
+  width: 75px;
+
+  margin-right: 12px;
+}
+
+@media (max-width: 500px) {
+  .logo {
+    height: 50px;
+    width: 50px;
+
+    margin-right: 8px;
   }
 }
 
