@@ -8,7 +8,7 @@
       <i>Tell your Story and connect with Europeans all over the world.</i><br>
     </header>
 
-    <main class="card">
+    <main>
       <nuxt-child></nuxt-child>
     </main>
 

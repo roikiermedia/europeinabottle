@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section class="card">
 
     <textarea v-model="userMessage" placeholder="Dear People of the european union..." maxlength="10000" class="content"></textarea>
     <span>Grettings
@@ -17,7 +17,6 @@
 
 
     <button @click="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Throw your bottle into the ocean!</button>
-
 
     <!-- <bottle-history></bottle-history> -->
 	</section>
