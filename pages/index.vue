@@ -63,6 +63,12 @@ export default {
   background-size: 100% 1.5em;
   background-image: linear-gradient(0deg, rgb(238,238,238) 0.1em, rgba(0,0,0,0) 0.1em);
 }
+@media (max-width: 700px) {
+  .card {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
 
 nav {
   margin-top: 24px;
