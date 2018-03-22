@@ -54,11 +54,10 @@ export default {
         this.updateCookie(res.data._id);
       });
       this.messageSendSuccess = true;
-      this.getRandomBottle();
+      this.nextStep();
     },
-    async getRandomBottle() {
-      let message = await axios.get('/api/randommessage');
-      this.$router.push(`/bottle/${message.data._id}`);
+    nextStep() {
+      this.$router.push('/flowing');
     },
     updateCookie(newMessageId) {
       let localInfo = document.cookie;
