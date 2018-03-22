@@ -1,7 +1,6 @@
 <template>
-
-  <section>
-    <h3>EU in a bottile Guidlines</h3>
+  <section class="card">
+    <h3>EU in a Bottle Guidlines</h3>
 
     <ol>
       <li>Be awesome to each other!</li>
@@ -9,7 +8,6 @@
       <li>More Stuff</li>
     </ol>
   </section>
-
 </template>
 
 <script>
