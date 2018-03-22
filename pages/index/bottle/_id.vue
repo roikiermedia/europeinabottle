@@ -1,6 +1,6 @@
 <template>
   <section class="card">
-    <h3>Your Bottle Message</h3>
+    <h3>You found a Bottle!</h3>
     <div>
       <p>{{bottleMessage.userName}} <span v-if="bottleMessage.userLocation">from {{bottleMessage.userLocation}} </span>writes:</p>
     </div>
