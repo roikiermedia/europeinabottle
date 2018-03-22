@@ -27,8 +27,8 @@ button, .btn {
   &:focus {
     outline: none;
 	}
-	&[disabled="true"] {
+	&[disabled="disabled"] {
 		color: hsla(0, 0, 0, 0.4);
-		box-shadow: 0 0px 0px 0 hsla(0, 0, 0, 0);
+    box-shadow: 0 0px 0px 0 hsla(0, 0, 0, 0);
 	}
 }
