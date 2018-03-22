@@ -5,7 +5,7 @@
 
     <header class="card">
       <h1>#EUinaBottle</h1>
-      <i>Tell your Story and connect with people everythere in Europe.</i><br>
+      <i>Tell your Story and connect with people everywhere in Europe.</i><br>
     </header>
 
     <main>
