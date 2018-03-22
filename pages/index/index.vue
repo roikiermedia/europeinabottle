@@ -1,32 +1,138 @@
 <template>
 	<section>
-    <h1>#EUinaBottle</h1>
-    <i>Tell your Story and connect with Europeans all over the world.</i><br>
-    <ul>
-        <li>Send and receive bottles from all over Europe!</li>
-        <li>Decide if you want to save the message or just throw it back into the waves.</li>
-        <li>Follow your own bottles and see their adventures all across Europe.</li>
-        <li>Tell your friends something about Europe and be surprised by all the stories you receive in return.</li>
-        <li>Find out more about the European places the bottles come from.</li>
-    </ul>
-		<p>
-      You need to fill out your name and a message for sending your bottle away.
-    </p>
-  
-    <p> 
-      <b>The idea</b><br>
-        Europe is full of unique people, culture, languages, ideas and stories. Our mission is to connect people and their European stories, by exchanging thoughts and texts to show similarity and diversity. We connect Europeans from every corner of the continent by giving them the opportunity to send and receive digital messages in a bottle.<br>
-      <br>
-      <b>How does it work?</b><br>
-        You start with an blank piece of paper, ready for your creativity, and throw this with your own personal note, idea, story, thoughts into our digital European ocean. You share your view from your location in the EU and you can see what’s in the bottle receive in return.<br>
-      <br>
-      <b>Why a bottle?</b><br>
-        For generations, the idea of sending a message in a bottle has been an adventure full of hope and excitement. We are using this old idea and transforming it into a modern, digital adventure, by maintaining its cute retro charm and by making it accessible to for everyone online. <br>
-      <br>
-      <b>When and how can I start?</b><br>
-        You can start right now! We provide you with a digital piece of paper, ready for your thoughts. Just write a message and we put it in a digital bottle for you! 
-        You can start by telling people something about the village, city or region you are living in, your passions, your hobbies, or share stories about your country or daily life. It's up to you and your creativity!
-        And after you send a bottle, you can receive one from somewhere in the EU!<br>
-    </p>
+
+    <textarea v-model="userMessage" placeholder="Dear People of the european union..." maxlength="10000" class="content"></textarea>
+    <span>Grettings
+      <span v-if="userLocation"> from </span>
+      <span v-else>: </span>
+      <input type="text" v-model="userLocation" placeholder="from..." class="location">
+    </span>
+    <input type="text" v-model="userName" placeholder="Your Name" class="signiture">
+    <span class="post">P.s. You can also find me on Twitter @<input type="text" v-model="userTwitterHandle" placeholder="yourTwitterhandle" class="twitter"></span>
+
+    <div class="guidelines">
+      <input name="guidelines" type="checkbox" id="checkbox" v-model="checked">
+      <label for="guidelines">* Please check that you are following <nuxt-link to="/guidelines">our Guidelines</nuxt-link>.</label>
+    </div>
+
+
+    <button @click="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Throw your bottle into the ocean!</button>
+
+
+    <!-- <bottle-history></bottle-history> -->
 	</section>
 </template>
+
+<script>
+import axios from '~/plugins/axios';
+import BottleHistory from '~/components/bottleHistory.vue';
+
+export default {
+  components: {
+    BottleHistory,
+  },
+	data() {
+    return {
+      userName: '',
+      userLocation: '',
+      userMessage: '',
+      userTwitterHandle: '',
+      checked: false,
+      messageSendSuccess: false,
+    };
+  },
+  methods: {
+    sendBottle() {
+      axios.post('/api/bottle', { message: {
+        userName: this.userName,
+        userLocation: this.userLocation,
+        userMessage: this.userMessage,
+        userTwitterHandle: this.userTwitterHandle,
+      },
+      })
+      .then((res) => {
+        // Save id from created bottle in a cookie
+        this.updateCookie(res.data._id);
+      });
+      this.messageSendSuccess = true;
+      this.getRandomBottle();
+    },
+    async getRandomBottle() {
+      let message = await axios.get('/api/randommessage');
+      this.$router.push(`/bottle/${message.data._id}`);
+    },
+    updateCookie(newMessageId) {
+      let localInfo = document.cookie;
+      document.cookie = 'messageId=' + newMessageId + ',' + this.getCookie('messageId');
+    },
+    getCookie(cname) {
+      // Todo: Make more beautiful and not use some random code, but it works!
+      var name = cname + '=';
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return '';
+    },
+    testFillout() {
+      this.userName = 'Beate Beispiel';
+      this.userLocation = 'Hamburg, Germany';
+      this.userMessage = new Date().getTime() + ' You are awesome! Hamburg is small cool border town in the centry of europe. Tschüß und Good Bye';
+      this.userTwitterHandle = '@euinabottle';
+    },
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+span, input, textarea {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  
+  font-size: 16px;
+  font-family: monospace;
+}
+
+button {
+  display: block;
+
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.content {
+  min-height: 120px;
+  width: 100%;
+
+  overflow-y: auto;
+
+  resize: vertical;
+}
+.signiture {
+  width: 100%;
+
+  font-size: 24px;
+  font-family: cursive;
+}
+.post {
+  position: relative;
+
+  margin-top: 40px;
+
+  font-size: 14px;
+}
+.guidelines {
+  display: block;
+
+  margin-top: 28px;
+}
+</style>
