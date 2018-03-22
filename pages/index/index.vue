@@ -1,25 +1,24 @@
 <template>
-	<section class="card">
+	<form class="card">
 
-    <textarea v-model="userMessage" placeholder="Dear People of the european union..." maxlength="10000" class="content"></textarea>
+    <textarea v-model="userMessage" placeholder="Dear People of the european union..." maxlength="10000" class="content" required></textarea>
     <span>Grettings
       <span v-if="userLocation"> from </span>
       <span v-else>: </span>
       <input type="text" v-model="userLocation" placeholder="from..." class="location">
     </span>
-    <input type="text" v-model="userName" placeholder="Your Name" class="signiture">
+    <input type="text" v-model="userName" placeholder="Your Name" class="signiture" required>
     <span class="post">P.s. You can also find me on Twitter @<input type="text" v-model="userTwitterHandle" placeholder="yourTwitterhandle" class="twitter"></span>
 
     <div class="guidelines">
-      <input name="guidelines" id="guidelines" type="checkbox" v-model="checked">
+      <input name="guidelines" id="guidelines" type="checkbox" v-model="checked" required>
       <label for="guidelines">* Please check that you are following <nuxt-link to="/guidelines">our Guidelines</nuxt-link>.</label>
     </div>
 
-
-    <button @click="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Throw your bottle into the sea!</button>
+    <button type="submit" @click.prevent="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Throw your bottle into the sea!</button>
 
     <!-- <bottle-history></bottle-history> -->
-	</section>
+	</form>
 </template>
 
 <script>
