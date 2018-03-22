@@ -16,7 +16,7 @@
     </div>
 
 
-    <button @click="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Throw your bottle into the ocean!</button>
+    <button @click="sendBottle" :disabled="!checked || userName == '' || userMessage == ''">Throw your bottle into the sea!</button>
 
     <!-- <bottle-history></bottle-history> -->
 	</section>
