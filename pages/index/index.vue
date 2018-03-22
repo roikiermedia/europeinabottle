@@ -1,7 +1,7 @@
 <template>
 	<form class="card">
 
-    <textarea v-model="userMessage" placeholder="Dear People of the european union..." maxlength="10000" class="content" required></textarea>
+    <textarea v-model="userMessage" placeholder="Dear People of the European Union..." maxlength="10000" class="content" required></textarea>
     <span>Grettings
       <span v-if="userLocation"> from </span>
       <span v-else>: </span>
