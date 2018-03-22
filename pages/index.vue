@@ -16,12 +16,11 @@
       <ul>
         <li>Send and receive bottles from all over Europe!</li>
         <li>Decide if you want to save the message or just throw it back into the waves.</li>
-        <li>Follow your own bottles and see their adventures all across Europe.</li>
         <li>Tell your friends something about Europe and be surprised by all the stories you receive in return.</li>
         <li>Find out more about the European places the bottles come from.</li>
       </ul>
     
-      <p> 
+      <p style="margin-top: 42px;"> 
         <b>The idea</b><br>
           Europe is full of unique people, culture, languages, ideas and stories. Our mission is to connect people and their European stories, by exchanging thoughts and texts to show similarity and diversity. We connect Europeans from every corner of the continent by giving them the opportunity to send and receive digital messages in a bottle.<br>
         <br>
