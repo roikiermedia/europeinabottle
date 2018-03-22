@@ -11,7 +11,7 @@
     <span class="post">P.s. You can also find me on Twitter @<input type="text" v-model="userTwitterHandle" placeholder="yourTwitterhandle" class="twitter"></span>
 
     <div class="guidelines">
-      <input name="guidelines" type="checkbox" id="checkbox" v-model="checked">
+      <input name="guidelines" id="guidelines" type="checkbox" v-model="checked">
       <label for="guidelines">* Please check that you are following <nuxt-link to="/guidelines">our Guidelines</nuxt-link>.</label>
     </div>
 
