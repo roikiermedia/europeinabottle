@@ -48,11 +48,11 @@
 	"sources": {
 		"openmaptiles": {
 			"type": "vector",
-			"url": "http://195.201.92.171:8080/data/v3.json"
+			"url": "https://map.chaos.lol/data/v3.json"
 		}
 	},
-	"sprite": "http://195.201.92.171:8080/styles/osm-bright/sprite",
-	"glyphs": "http://195.201.92.171:8080/fonts/{fontstack}/{range}.pbf",
+	"sprite": "https://map.chaos.lol/styles/osm-bright/sprite",
+	"glyphs": "https://map.chaos.lol/fonts/{fontstack}/{range}.pbf",
 	"layers": [
 		{
 			"id": "background",
