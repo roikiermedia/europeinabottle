@@ -2,7 +2,7 @@
 	<form class="card">
 
     <textarea v-model="userMessage" placeholder="Dear People of the European Union..." maxlength="10000" class="content" required></textarea>
-    <span>Grettings
+    <span>Greetings
       <span v-if="userLocation"> from </span>
       <span v-else>: </span>
       <input type="text" v-model="userLocation" placeholder="from..." class="location">

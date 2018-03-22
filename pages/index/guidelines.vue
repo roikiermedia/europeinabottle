@@ -1,12 +1,15 @@
 <template>
   <section class="card">
+    <nuxt-link to="/" class="back">Back to Homepage</nuxt-link>
     <h3>EU in a Bottle Guidlines</h3>
 
-    <ol>
+    <ul>
       <li>Be awesome to each other!</li>
       <li>We are collecting your IP adress for statistics</li>
-      <li>More Stuff</li>
-    </ol>
+      <li>
+        <nuxt-link to="/impressum">More Stuff</nuxt-link>
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -21,4 +24,8 @@ export default {
 </script>
 
 <style scoped>
+.back {
+  display: block;
+  padding-bottom: 12px;
+}
 </style>
