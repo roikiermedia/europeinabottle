@@ -12,7 +12,7 @@
 			<a href="https://facebook.com/euinabottle" target="_blank">Facebook</a>
 		</nav>
 
-		<nuxt-link to="/" tag="button">Write another bottle.</nuxt-link>
+		<nuxt-link to="/" tag="button">Write another message.</nuxt-link>
 	</section>
 </template>
 
